@@ -38,3 +38,9 @@
   line-height: 1;
   cursor: pointer;
 }
+
+.winner {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
