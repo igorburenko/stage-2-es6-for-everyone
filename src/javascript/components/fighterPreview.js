@@ -8,7 +8,8 @@ export function createFighterPreview(fighter, position) {
   });
   if (fighter) {
     const fighterImage = createFighterImage(fighter);
-    fighterElement.appendChild(fighterImage);
+    const fighterAddinfo = createFighterAddInfo(fighter);
+    fighterElement.append(fighterImage, fighterAddinfo);
   }
   // todo: show fighter info (image, name, health, etc.)
 
@@ -29,4 +30,29 @@ export function createFighterImage(fighter) {
   });
 
   return imgElement;
+}
+
+export function createFighterAddInfo(fighter) {
+  const { health, name } = fighter;
+
+  const addInfoElement = createElement({
+    tagName: 'div',
+    className: 'fighter-preview___add-info',
+  });
+
+  const nameElement = createElement({
+    tagName: 'p',
+    className: 'fighter-preview___add-name',
+    innerText: name,
+  });
+
+  const healthElement = createElement({
+    tagName: 'p',
+    className: 'fighter-preview___add-health',
+    innerText: health,
+  });
+
+  addInfoElement.append(nameElement, healthElement);
+
+  return addInfoElement;
 }
