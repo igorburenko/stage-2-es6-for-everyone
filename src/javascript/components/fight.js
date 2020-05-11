@@ -25,10 +25,10 @@ export function onKeyDown(key, resolve) {
   setBlock(key.code, true);
   if (key.code === controls.PlayerOneAttack) {
     fighters.second.health -= getDamage(fighters.first, fighters.second);
-    renderHealthIndicator('left-fighter-indicator', fighters.second);
+    renderHealthIndicator('right-fighter-indicator', fighters.second);
   } else if (key.code === controls.PlayerTwoAttack) {
     fighters.first.health -= getDamage(fighters.second, fighters.first);
-    renderHealthIndicator('right-fighter-indicator', fighters.first)
+    renderHealthIndicator('left-fighter-indicator', fighters.first)
   }
   if (isGameOver()) {
     resolve(fighters.first.health <= 0 ? fighters.second : fighters.first);
@@ -37,7 +37,6 @@ export function onKeyDown(key, resolve) {
 
 function renderHealthIndicator(indicatorId, fighter) {
   const indicator = document.querySelector(`#${indicatorId}`);
-  console.log(fighter.health);
   indicator.style.width = `${fighter.health / fighter.maxHealth * 100}%`
 }
 
